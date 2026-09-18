@@ -111,3 +111,81 @@ updateNavigation();
     setTimeout(() => root.classList.remove('hero-intro', 'hero-ready'), 650);
   }).catch(() => root.classList.remove('hero-intro', 'hero-ready'));
 })();
+
+/* Decorative scroll depth. All text/images are cut out of the foreground mask.
+   Gray separators and the blue work section cover the floating rings entirely. */
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const overlay = document.querySelector('.depth-ornaments');
+  if (!overlay) return;
+  const cutouts = overlay.querySelector('.content-cutouts');
+  const orbits = [...overlay.querySelectorAll('.orbit')];
+  const surfaces = [...document.querySelectorAll('.matte-surface')];
+  const backRings = [...document.querySelectorAll('.rings .ring')];
+  const protectedElements = [...document.querySelectorAll('.site-header, main h1, main h2, main h3, main p, main img, main a, main button, main figcaption, .companies, .testimonials, #work, footer')];
+  const ns = 'http://www.w3.org/2000/svg';
+  const masks = protectedElements.map(() => {
+    const rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('rx', '12');
+    cutouts.append(rect);
+    return rect;
+  });
+  let pending = false;
+  function drawDepth() {
+    pending = false;
+    const w = innerWidth, h = innerHeight;
+    const moving = !reduced.matches;
+    const wide = w > 700;
+    // Complete all geometry reads before writing styles.
+    const protectedRects = wide && moving ? protectedElements.map(el => el.getBoundingClientRect()) : [];
+    const surfaceTops = surfaces.map(el => el.parentElement.getBoundingClientRect().top);
+    const ringTops = backRings.map(el => el.closest('section').getBoundingClientRect().top);
+    surfaces.forEach((el,i) => {
+      const offset = moving ? Math.max(-18,Math.min(18,-surfaceTops[i]*.025)) : 0;
+      el.style.setProperty('--texture-y', `${offset.toFixed(2)}px`);
+    });
+    backRings.forEach((el,i) => {
+      const max = wide ? 42 : 12;
+      const offset = moving ? Math.max(-max,Math.min(max,-ringTops[i]*(.025+(i%3)*.016))) : 0;
+      el.style.transform = `translate3d(0,${offset.toFixed(2)}px,0)`;
+    });
+    overlay.classList.toggle('depth-ready', wide && moving);
+    if (!wide || !moving) return;
+    overlay.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    protectedRects.forEach((r,i) => {
+      const visible = r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < h;
+      const mask = masks[i];
+      mask.setAttribute('x', String(r.left-18));
+      mask.setAttribute('y', String(r.top-18));
+      mask.setAttribute('width', String(visible ? r.width+36 : 0));
+      mask.setAttribute('height', String(visible ? r.height+36 : 0));
+    });
+    const travel = Math.sin(scrollY / Math.max(h,1) * .65);
+    const positions = [
+      [-w*.052,h*.3-travel*56,Math.min(170,w*.125),Math.min(205,w*.15),-22],
+      [w*1.04,h*.64+travel*85,Math.min(150,w*.11),Math.min(185,w*.135),24],
+      [-w*.035,h*.86+travel*38,Math.min(108,w*.08),Math.min(125,w*.093),18],
+      [w*.975,h*.19-travel*35,Math.min(50,w*.038),Math.min(68,w*.052),-28]
+    ];
+    orbits.forEach((g,i) => {
+      const [x,y,rx,ry,angle] = positions[i];
+      g.setAttribute('transform', `translate(${x} ${y}) rotate(${angle+travel*4})`);
+      g.querySelectorAll('ellipse').forEach(e => {
+        e.setAttribute('rx',String(rx)); e.setAttribute('ry',String(ry));
+      });
+    });
+  }
+  function scheduleDepth() {
+    if (!pending) { pending = true; requestAnimationFrame(drawDepth); }
+  }
+  addEventListener('scroll',scheduleDepth,{passive:true});
+  addEventListener('resize',scheduleDepth);
+  addEventListener('load',scheduleDepth);
+  reduced.addEventListener('change',scheduleDepth);
+  if ('ResizeObserver' in window) {
+    const depthObserver = new ResizeObserver(scheduleDepth);
+    document.querySelectorAll('.section-sheet').forEach(el=>depthObserver.observe(el));
+  }
+  document.fonts.ready.then(scheduleDepth);
+  drawDepth();
+})();
