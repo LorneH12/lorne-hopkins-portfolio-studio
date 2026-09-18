@@ -56,7 +56,7 @@ Each work tab has a `data-panel` value and `aria-controls` matching a panel ID. 
 
 ## Motion and accessibility
 
-Find `SECTION-ONLY SCROLL OVERLAP` in the stylesheet. Whole sheets are sticky briefly; individual assets never animate. To remove overlap entirely, set `.section-sheet { position: relative; top: auto; }` and `.scene { padding-bottom: 0; margin-bottom: 0; }`. Reduced-motion users already get this behavior.
+Find `SECTION-ONLY SCROLL OVERLAP` in the stylesheet. Whole sheets are sticky briefly. Portraits and text remain stationary; the ornamental rings and matte backgrounds have their own gentle motion, described below. To remove overlap entirely, set `.section-sheet { position: relative; top: auto; }` and `.scene { padding-bottom: 0; margin-bottom: 0; }`. Reduced-motion users already get this behavior.
 
 Before committing, check phone and desktop sizes, all four tabs, expandable details, navigation, and email/LinkedIn links. The current colleague review text has been approved. Confirm approval for any replacement review wording before publishing it.
 
