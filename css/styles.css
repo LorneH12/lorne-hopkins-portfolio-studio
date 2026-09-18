@@ -1157,3 +1157,28 @@ main {
 @media (max-width:700px) {
   .matte-surface::after { background-size:130px 130px; }
 }
+
+/* Mobile divider contrast and logos: four equal columns without overflow. */
+@media (max-width:700px) {
+  .company-strip,.testimonials {
+    background-color:#d2d6da;
+    border-top:1px solid #c3c9cf;
+    border-bottom:1px solid #c3c9cf;
+  }
+  .companies {
+    width:100%;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:22px 8px;
+    justify-items:center;
+  }
+  .companies > * { min-width:0; max-width:100%; }
+  .companies span {
+    font-size:clamp(9px,2.55vw,12px)!important;
+    text-align:center;
+  }
+  .companies .schwab { font-size:clamp(13px,3.5vw,16px)!important; }
+  .companies img { max-width:100%; object-fit:contain; }
+  .companies .amex:has(img) { width:min(48px,100%); }
+  .companies .amex img { width:100%; height:auto; }
+  .companies .concentrix { letter-spacing:-.04em; }
+}
