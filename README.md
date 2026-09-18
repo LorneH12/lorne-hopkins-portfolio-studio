@@ -22,7 +22,7 @@ GitHub Pages serves `main` from `/ (root)`. Commits to `main` automatically upda
 
 ## Motion
 
-Only complete section sheets overlap slightly during scrolling (40–80px). Images, rings and text have no independent parallax or scroll transforms. Sections grow with their content; tall sections remain fully readable before pinning. Reduced-motion preferences turn overlap off.
+Only complete section sheets overlap slightly during scrolling (40–80px). Portraits and text remain stationary within their sections. Decorative rings and matte surface textures move gently with scrolling, with foreground rings masked away from content. Sections grow with their content; tall sections remain fully readable before pinning. Reduced-motion preferences turn overlap and decorative movement off.
 
 ## Content status
 

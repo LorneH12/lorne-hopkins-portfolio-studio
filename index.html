@@ -12,8 +12,8 @@
   <link rel="preload" as="image" href="assets/hero.webp" imagesrcset="assets/hero-small.webp 530w, assets/hero.webp 1060w" imagesizes="(max-width: 700px) 90vw, 60vh" fetchpriority="high"/>
   <script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.classList.add('hero-intro'); setTimeout(function () { document.documentElement.classList.remove('hero-intro'); }, 4500); }</script>
   <link href="css/fonts.css" rel="stylesheet"/>
-  <link href="css/styles.css?v=hero-reveal-1" rel="stylesheet"/>
-  <script defer="" src="js/main.js?v=hero-reveal-1">
+  <link href="css/styles.css?v=depth-1" rel="stylesheet"/>
+  <script defer="" src="js/main.js?v=depth-1">
   </script>
  </head>
  <body>
@@ -56,6 +56,7 @@
     <div class="section-sheet">
      <!-- 01 HOME: portrait, headline and rings -->
      <section aria-labelledby="hero-title" class="hero screen" id="home">
+      <div class="matte-surface" aria-hidden="true"></div>
       <div aria-hidden="true" class="rings">
        <i class="ring ring-one">
        </i>
@@ -126,6 +127,7 @@
     <div class="section-sheet">
      <!-- 02 ABOUT: laptop images and value statement -->
      <section aria-labelledby="about-title" class="about screen" id="about">
+      <div class="matte-surface" aria-hidden="true"></div>
       <figure class="laptop left">
        <img alt="Lorne listening during a live online learning session on a laptop" decoding="async" height="1024" loading="lazy" src="assets/live-session.webp" width="1536"/>
        <figcaption>
@@ -483,6 +485,7 @@
     <div class="section-sheet">
      <!-- 04 CONTACT: email and LinkedIn -->
      <section aria-labelledby="contact-title" class="contact screen" id="contact">
+      <div class="matte-surface" aria-hidden="true"></div>
       <div aria-hidden="true" class="rings">
        <i class="ring ring-one">
        </i>
@@ -532,5 +535,15 @@
     </div>
    </div>
   </main>
+  <!-- Foreground ornaments: the script masks every text/image area and opaque divider. -->
+  <svg class="depth-ornaments" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+   <defs><mask id="ornament-safe-space" maskUnits="userSpaceOnUse"><rect class="mask-base" fill="white" width="100%" height="100%"/><g class="content-cutouts" fill="black"></g></mask></defs>
+   <g class="floating-rings" mask="url(#ornament-safe-space)">
+    <g class="orbit orbit-navy"><ellipse class="orbit-shadow"/><ellipse class="orbit-face"/></g>
+    <g class="orbit orbit-cognac"><ellipse class="orbit-shadow"/><ellipse class="orbit-face"/></g>
+    <g class="orbit orbit-chalk"><ellipse class="orbit-shadow"/><ellipse class="orbit-face"/></g>
+    <g class="orbit orbit-fine"><ellipse class="orbit-shadow"/><ellipse class="orbit-face"/></g>
+   </g>
+  </svg>
  </body>
 </html>

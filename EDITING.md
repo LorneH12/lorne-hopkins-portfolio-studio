@@ -66,3 +66,8 @@ Before committing, check phone and desktop sizes, all four tabs, expandable deta
 Original editable PNGs remain in `assets/`. The live page uses transparent WebP copies: `hero.webp`, `hero-small.webp` (phone size), `live-session.webp` and `instructor-session.webp`. Replace these served files when changing images, or update the HTML sources. The hero uses a responsive `srcset` and a matching preload.
 
 The decorative `.hero-trace` SVG in `index.html` follows the current portrait's alpha silhouette. Update that contour if the pose changes. The final CSS and JS blocks control a single soft pulse and approximately 1.6-second outline-to-silhouette-to-portrait reveal. It waits for portrait decoding, never blocks the page, and has a 4.5-second fail-safe. Reduced-motion users see the normal image without the effect.
+
+
+## Ornamental depth and matte texture
+
+The final CSS/JS blocks control the scroll-reactive rings and matte white surfaces. `assets/matte-grain.svg` is the lightweight grain tile. Foreground rings occupy edge whitespace; an SVG mask excludes all text, images, navigation and the opaque company/testimonial/work sections. Keep new content in semantic HTML (`h1`–`h3`, `p`, `img`, links/buttons) or extend `protectedElements` in `js/main.js` for custom elements. Ring positions and sizes are in `positions`. Rings use navy, cognac and chalk colors. On phones the foreground layer is hidden and background movement is limited to 12px. Reduced-motion disables decorative movement.
