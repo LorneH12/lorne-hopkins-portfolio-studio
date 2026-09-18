@@ -59,3 +59,10 @@ Each work tab has a `data-panel` value and `aria-controls` matching a panel ID. 
 Find `SECTION-ONLY SCROLL OVERLAP` in the stylesheet. Whole sheets are sticky briefly; individual assets never animate. To remove overlap entirely, set `.section-sheet { position: relative; top: auto; }` and `.scene { padding-bottom: 0; margin-bottom: 0; }`. Reduced-motion users already get this behavior.
 
 Before committing, check phone and desktop sizes, all four tabs, expandable details, navigation, and email/LinkedIn links. The current colleague review text has been approved. Confirm approval for any replacement review wording before publishing it.
+
+
+## Optimized images and hero reveal
+
+Original editable PNGs remain in `assets/`. The live page uses transparent WebP copies: `hero.webp`, `hero-small.webp` (phone size), `live-session.webp` and `instructor-session.webp`. Replace these served files when changing images, or update the HTML sources. The hero uses a responsive `srcset` and a matching preload.
+
+The decorative `.hero-trace` SVG in `index.html` follows the current portrait's alpha silhouette. Update that contour if the pose changes. The final CSS and JS blocks control a single soft pulse and approximately 1.6-second outline-to-silhouette-to-portrait reveal. It waits for portrait decoding, never blocks the page, and has a 4.5-second fail-safe. Reduced-motion users see the normal image without the effect.
