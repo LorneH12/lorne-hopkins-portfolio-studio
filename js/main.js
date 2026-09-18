@@ -93,3 +93,21 @@ if ('ResizeObserver' in window) {
 addEventListener('load', measureSections);
 measureSections();
 updateNavigation();
+
+/* Start immediately; reveal only after the portrait is decoded.
+   A slow or failed request never blocks navigation or the rest of the page. */
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains('hero-intro')) return;
+  const portrait = document.querySelector('.hero-person img');
+  const minimumIntro = new Promise(resolve => setTimeout(resolve, 950));
+  const ready = portrait.decode ? portrait.decode() : new Promise((resolve, reject) => {
+    if (portrait.complete) return portrait.naturalWidth ? resolve() : reject();
+    portrait.addEventListener('load', resolve, {once:true});
+    portrait.addEventListener('error', reject, {once:true});
+  });
+  Promise.all([ready, minimumIntro]).then(() => {
+    root.classList.add('hero-ready');
+    setTimeout(() => root.classList.remove('hero-intro', 'hero-ready'), 650);
+  }).catch(() => root.classList.remove('hero-intro', 'hero-ready'));
+})();
