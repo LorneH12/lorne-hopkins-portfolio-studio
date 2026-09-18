@@ -26,4 +26,4 @@ Only complete section sheets overlap slightly during scrolling (40–80px). Imag
 
 ## Content status
 
-Training images are illustrative scenes. Colleague recommendations are clearly marked proposed drafts, not approved endorsements. Keep those labels until each colleague approves their exact wording.
+Training images are illustrative scenes. Colleague recommendations are approved by the user and displayed as italic quotations with five-star ratings.

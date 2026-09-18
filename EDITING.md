@@ -58,4 +58,4 @@ Each work tab has a `data-panel` value and `aria-controls` matching a panel ID. 
 
 Find `SECTION-ONLY SCROLL OVERLAP` in the stylesheet. Whole sheets are sticky briefly; individual assets never animate. To remove overlap entirely, set `.section-sheet { position: relative; top: auto; }` and `.scene { padding-bottom: 0; margin-bottom: 0; }`. Reduced-motion users already get this behavior.
 
-Before committing, check phone and desktop sizes, all four tabs, expandable details, navigation, and email/LinkedIn links. Keep testimonial draft labels until the named colleague has approved the quote.
+Before committing, check phone and desktop sizes, all four tabs, expandable details, navigation, and email/LinkedIn links. The current colleague review text has been approved. Confirm approval for any replacement review wording before publishing it.
