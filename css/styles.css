@@ -333,12 +333,6 @@ a,button {
 .testimonial-heading h2 {
   font-size:28px
 }
-.draft-notice {
-  font-size:11px;
-  color:#535a65;
-  margin:10px auto 0;
-  max-width:660px
-}
 .colleagues {
   display:grid;
   grid-template-columns:repeat(6,minmax(0,1fr));
@@ -382,16 +376,8 @@ a,button {
   line-height:1.45;
   margin-top:2px
 }
-.draft-label {
-  display:inline-block;
-  background:#dfe2e6;
-  color:#4e5660;
-  font-size:9px;
-  padding:1px 6px;
-  border-radius:3px;
-  margin:7px 0 5px
-}
 .quote {
+  margin-top:8px;
   font-size:12px;
   line-height:1.5
 }
@@ -872,13 +858,11 @@ footer a {
   .testimonial-heading h2 {
     font-size:25px
   }
-  .draft-notice {
-    font-size:10px
-  }
-  .colleague h3 {
+    .colleague h3 {
     font-size:14px
   }
   .quote {
+  margin-top:8px;
     font-size:13px
   }
   .work {
@@ -1063,4 +1047,13 @@ main {
     position:relative;
     top:auto;
   }
+}
+
+/* Approved colleague review ratings. */
+.review-stars {
+  color:var(--cognac);
+  font-size:16px;
+  letter-spacing:3px;
+  line-height:1.3;
+  margin-top:7px;
 }
