@@ -4,7 +4,7 @@
   --ink:#232629;
   --cognac:#b66c35;
   --tan:#edb87e;
-  --gray:#f0f1f2;
+  --gray:#d2d6da;
   --white:#fff;
   --header:82px
 }
@@ -1107,15 +1107,15 @@ main {
   z-index:0;
   pointer-events:none;
   background-image:url('../assets/matte-grain.svg'),
-    radial-gradient(ellipse at 10% 25%,rgba(182,108,53,.065),transparent 52%),
-    radial-gradient(ellipse at 92% 72%,rgba(35,69,116,.055),transparent 48%);
+    radial-gradient(ellipse at 10% 25%,rgba(182,108,53,.085),transparent 52%),
+    radial-gradient(ellipse at 92% 72%,rgba(35,69,116,.07),transparent 48%);
   background-size:160px 160px,100% 100%,100% 100%;
   transform:translate3d(0,var(--texture-y,0px),0);
 }
 .about .matte-surface {
   background-image:url('../assets/matte-grain.svg'),
-    radial-gradient(ellipse at 50% 100%,rgba(182,108,53,.07),transparent 62%),
-    radial-gradient(ellipse at 6% 0%,rgba(35,69,116,.05),transparent 45%);
+    radial-gradient(ellipse at 50% 100%,rgba(182,108,53,.09),transparent 62%),
+    radial-gradient(ellipse at 6% 0%,rgba(35,69,116,.065),transparent 45%);
 }
 .about-copy,.about .laptop { position:relative; z-index:2; }
 .depth-ornaments {
@@ -1142,4 +1142,18 @@ main {
 @media (prefers-reduced-motion:reduce) {
   .depth-ornaments { display:none; }
   .matte-surface,.rings .ring { transform:none!important; }
+}
+
+/* Slightly stronger paper grain, beneath all content. */
+.matte-surface::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('../assets/matte-grain.svg') repeat;
+  background-size:160px 160px;
+  opacity:.35;
+  mix-blend-mode:multiply;
+}
+@media (max-width:700px) {
+  .matte-surface::after { background-size:130px 130px; }
 }
