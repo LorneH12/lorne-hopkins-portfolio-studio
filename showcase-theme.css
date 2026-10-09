@@ -1,0 +1,10 @@
+
+:root{--maroon:#234574;--gold:#edb87e;--muted:#59626d;--line:#d3d9e0;--paper:#f7f9fc}
+.training-section{padding:3.5rem 5vw 2.5rem;background:#f5f7fa;scroll-margin-top:var(--header)}
+.training-heading h2{line-height:1.05}.training-heading .eyebrow,.sample-copy .eyebrow{color:var(--blue);font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+.training-heading>p{line-height:1.6}.training-heading{max-width:1200px}.sample-actions .button{padding:.8rem 1.1rem;border-radius:30px;font-size:.8rem}.sample-actions a{text-decoration:underline}.sample-panel{min-height:460px}.sample-copy h3{font-family:Manrope,Arial,sans-serif}.course-tabs{margin-top:1.4rem}.player-bar h2{color:var(--ink)}.player-bar a{text-decoration:underline;font-size:.75rem}
+.career-downloads{margin-top:2rem;max-width:760px;scroll-margin-top:calc(var(--header) + 20px)}.career-downloads h3{font-size:1.3rem}.career-downloads>p{font-size:.85rem;margin:.4rem 0 1rem}.download-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.download-grid article{border:1px solid #bcc6d1;background:#ffffffd9;border-radius:12px;padding:1rem 1.2rem}.download-grid h4{margin:0;font-size:1.05rem}.download-grid p{font-size:.75rem;margin:.3rem 0 .8rem}.download-grid a{font-size:.75rem;font-weight:700;display:inline-block;margin-right:1rem;text-decoration:underline;text-underline-offset:3px}.contact{height:auto;min-height:calc(100svh - var(--header));padding-top:4rem;padding-bottom:5rem}.contact .contact-copy{max-width:1000px}.site-header nav{gap:22px}
+@media(max-width:900px){.site-header nav{gap:12px;font-size:12px}.brand{font-size:12px}}
+@media(max-width:700px){.training-section{padding:2rem 1.25rem}.download-grid{grid-template-columns:1fr;gap:.6rem}.career-downloads{margin-top:1.5rem}.contact{padding-bottom:5rem}.sample-panel{min-height:0}.training-heading>p{max-width:100%}.sample-actions .button{font-size:.75rem}.site-header nav{font-size:14px}}
+
+.site-header{background:#fff}
